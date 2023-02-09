@@ -22,7 +22,7 @@ const App = () => {
     }, [])
 
     useEffect(() => {
-        document.title = pageName + " - Mithi's Bare Minimum Hexapod Robot Simulator"
+        document.title = pageName + "Hexapod Robot Simulator"
         manageState("pose", { pose: DEFAULT_POSE })
     }, [pageName, manageState])
 
