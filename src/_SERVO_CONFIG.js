@@ -1,8 +1,8 @@
 // See configurable parameters at: http://johnny-five.io/api/servo/
 
 const controller = "PCA9685"
-const pca_left = "0x41"
-const pca_right = "0x40"
+const pca_left = "0x40"
+const pca_right = "0x41"
 
 const servoConfig = {
     rightMiddle: {

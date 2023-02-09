@@ -1,11 +1,11 @@
 // Previously all 100
 const DEFAULT_DIMENSIONS = {
-    front: 400,
-    side: 750,
-    middle: 650,
-    coxia: 300,
-    femur: 850,
-    tibia: 1200,
+    front: 110,
+    side: 150,
+    middle: 120,
+    coxia: 30,
+    femur: 90,
+    tibia: 100,
 }
 
 const DEFAULT_BODY_DIMENSIONS = {
