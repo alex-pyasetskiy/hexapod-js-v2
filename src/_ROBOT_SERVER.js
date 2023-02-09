@@ -1,3 +1,5 @@
+const Raspi = require('raspi-io').RaspiIO;
+
 const { Board, Servo } = require("johnny-five")
 const { servoConfig } = require("./_SERVO_CONFIG")
 const { SOCKET_SERVER_PORT, SOCKET_CLIENT_URLS, CHANNEL_NAME } = require("./_VAR_CONFIG")
@@ -20,7 +22,7 @@ const LEG_POSITIONS = [
     "rightBack",
 ]
 
-const board = new Board()
+const board = new Board({io: new Raspi()})
 
 board.on("ready", () => {
     console.log("board connected.")
