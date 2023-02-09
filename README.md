@@ -1,5 +1,3 @@
-# Mithi's Hexapod IRL [![buy me coffee](https://img.shields.io/badge/Buy%20me%20-coffee!-orange.svg?logo=buy-me-a-coffee&color=795548)](https://ko-fi.com/minimithi)
-
 <p align="center">
     <img src="https://user-images.githubusercontent.com/1670421/103467765-451a2180-4d8d-11eb-8f94-1a23201595b9.gif" alt="drawing" />
 </p>
@@ -9,17 +7,6 @@ This is a "fork" of the original [Bare-Minimum Hexapod Robot Simulator 2](https:
 <p align="center">
     <img src="https://user-images.githubusercontent.com/1670421/103467849-46981980-4d8e-11eb-911e-7cb63282c0c2.gif" alt="drawing" />
 </p>
-
-## 🚧 Work In Progress  🚧
-
-❗❗🚜 🚧 👷 🏗️  (Underconstruction, use at your own risk! ) ❗❗🚜 🚧 👷 🏗️
-
-## Updates
-
--   [`v0.2.0`](https://github.com/mithi/hexapod-irl/tree/socket-io-version) - Replace PubNub with [SocketIO](http://socket.io/). Based on my experiments, PubNub batches messages and isn't _"inrealtime"_ enough. Using SocketIO, the jankiness is significantly reduced.
--   [`v0.1.0`](https://github.com/mithi/hexapod-irl/tree/pubnub-version) - Use [PubNub](https://www.pubnub.com/) to send commands. Janky.
-
-## How to Use (v0.0.2)
 
 1. Never built a hexapod robot before? The [mithi/hexy](https://github.com/mithi/hexy) repository is a great place to start! Includes the BOM!
 
