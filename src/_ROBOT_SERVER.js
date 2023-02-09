@@ -1,4 +1,4 @@
-const Raspi = require('raspi-io').RaspiIO;
+const raspi = require('raspi-io')
 
 const { Board, Servo } = require("johnny-five")
 const { servoConfig } = require("./_SERVO_CONFIG")
@@ -22,7 +22,7 @@ const LEG_POSITIONS = [
     "rightBack",
 ]
 
-const board = new Board({io: new Raspi()})
+const board = new Board({io: new raspi()})
 
 board.on("ready", () => {
     console.log("board connected.")
