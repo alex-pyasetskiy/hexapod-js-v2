@@ -5,6 +5,12 @@ const pca_left = "0x40"
 const pca_right = "0x41"
 
 const servoConfig = {
+    rightBack: {
+        alpha: { controller, pin: 0, pca_right },
+        beta: { controller, pin: 1, pca_right },
+        gamma: { controller, pin: 2, pca_right },
+    },
+    
     rightMiddle: {
         alpha: { controller, pin: 8, pca_right },
         beta: { controller, pin: 9, pca_right },
@@ -33,12 +39,6 @@ const servoConfig = {
         alpha: { controller, pin: 13, pca_left },
         beta: { controller, pin: 14, pca_left },
         gamma: { controller, pin: 15, pca_left },
-    },
-
-    rightBack: {
-        alpha: { controller, pin: 0, pca_right },
-        beta: { controller, pin: 1, pca_right },
-        gamma: { controller, pin: 2, pca_right },
     },
 }
 

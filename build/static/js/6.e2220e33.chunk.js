@@ -1,2 +1,0 @@
-(this.webpackJsonphexapod=this.webpackJsonphexapod||[]).push([[6],{111:function(a,t,o){"use strict";o.r(t);var i=o(0),e=o.n(i);t.default=function(){return e.a.createElement("img",{src:Math.random()>.5?"./img/small-robot-small.gif":"./img/small-robot-2-small.gif",loading:"lazy",height:"75px",width:"auto",alt:"hexapod robot animation",style:{marginTop:"10px",borderRadius:"20px"}})}}}]);
-//# sourceMappingURL=6.e2220e33.chunk.js.map
