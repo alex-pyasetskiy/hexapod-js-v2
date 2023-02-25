@@ -1,44 +1,44 @@
 // See configurable parameters at: http://johnny-five.io/api/servo/
 
 const controller = "PCA9685"
-const pca_left = "0x40"
-const pca_right = "0x41"
+const left_address = "0x41"
+const right_address="0x40"
 
 const servoConfig = {
-    rightBack: {
-        alpha: { controller, pin: 0, pca_right },
-        beta: { controller, pin: 1, pca_right },
-        gamma: { controller, pin: 2, pca_right },
-    },
-    
     rightMiddle: {
-        alpha: { controller, pin: 8, pca_right },
-        beta: { controller, pin: 9, pca_right },
-        gamma: { controller, pin: 10, pca_right },
+        alpha: { controller, pin: 4, adress: right_address },
+        beta: { controller, pin: 5, adress: right_address },
+        gamma: { controller, pin: 6, adress: right_address },
     },
 
     rightFront: {
-        alpha: { controller, pin: 13, pca_right },
-        beta: { controller, pin: 14, pca_right},
-        gamma: {controller, pin: 15, pca_right },
+        alpha: { controller, pin: 8, adress: right_address },
+        beta: { controller, pin: 9, adress: right_address},
+        gamma: { controller, pin: 10, adress: right_address },
     },
 
     leftFront: {
-        alpha: { controller, pin: 0, pca_left },
-        beta: { controller, pin: 1, pca_left },
-        gamma: { controller, pin: 2, pca_left },
+        alpha: { controller, pin: 5, address: left_address },
+        beta: { controller, pin: 6, address: left_address },
+        gamma: { controller, pin: 7, address: left_address },
     },
 
     leftMiddle: {
-        alpha: { controller, pin: 4, pca_left },
-        beta: { controller, pin: 5, pca_left },
-        gamma: { controller, pin: 6, pca_left },
+        alpha: { controller, pin: 9, address: left_address },
+        beta: { controller, pin: 10, address: left_address },
+        gamma: { controller, pin: 11, address: left_address },
     },
 
     leftBack: {
-        alpha: { controller, pin: 13, pca_left },
-        beta: { controller, pin: 14, pca_left },
-        gamma: { controller, pin: 15, pca_left },
+        alpha: { controller, pin: 13, address: left_address },
+        beta: { controller, pin: 14, address: left_address },
+        gamma: { controller, pin: 15, address: left_address },
+    },
+
+    rightBack: {
+        alpha: { controller, pin: 1, right_address },
+        beta: { controller, pin: 2, right_address },
+        gamma: { controller, pin: 3, right_address },
     },
 }
 

@@ -1,6 +1,5 @@
-var Raspi = require("raspi-io").RaspiIO;
-
 const { Board, Servo } = require("johnny-five")
+const Raspi = require('raspi-io').RaspiIO;
 const { servoConfig } = require("./_SERVO_CONFIG")
 const { SOCKET_SERVER_PORT, SOCKET_CLIENT_URLS, CHANNEL_NAME } = require("./_VAR_CONFIG")
 
@@ -9,20 +8,22 @@ const http = require("http").Server(app)
 
 const io = require("socket.io")(http, {
     cors: {
-        origin: "*"//SOCKET_CLIENT_URLS,
+        origin: SOCKET_CLIENT_URLS,
     },
 })
 
 const LEG_POSITIONS = [
-    "leftFront",
-    "rightFront",
-    "leftMiddle",
     "rightMiddle",
+    "rightFront",
+    "leftFront",
+    "leftMiddle",
     "leftBack",
     "rightBack",
 ]
 
-const board = new Board({io: new Raspi()})
+const board = new Board({
+    io: new Raspi()
+});
 
 board.on("ready", () => {
     console.log("board connected.")
@@ -42,25 +43,34 @@ board.on("ready", () => {
             gamma: initServo(leg, "gamma"),
         }
 
-        hexapodServos[leg].alpha.to(90)
-        hexapodServos[leg].beta.to(90)
-        hexapodServos[leg].gamma.to(90)
+        // hexapodServos[leg].alpha.to(90)
+        // hexapodServos[leg].beta.to(90)
+        // hexapodServos[leg].gamma.to(90)
+        hexapodServos[leg].alpha.center()
+        hexapodServos[leg].beta.center()
+        hexapodServos[leg].gamma.center()
     }
 
     // *************************
     // COMMAND SERVOS
     // *************************
+
+    var currentPose;
     const setServo = (pose, leg, angle) => {
         const newPose = pose[leg][angle]
         hexapodServos[leg][angle].to(newPose)
     }
 
     const setHexapodPose = pose => {
+        console.log("pose", pose, )
+        console.log("pocurrentPosese", currentPose)
         for (let leg of LEG_POSITIONS) {
             setServo(pose, leg, "alpha")
             setServo(pose, leg, "beta")
             setServo(pose, leg, "gamma")
         }
+
+        currentPose = pose;
     }
 
     // *************************
@@ -74,9 +84,14 @@ board.on("ready", () => {
         })
 
         socket.on(CHANNEL_NAME, msg => {
-            console.log("lag:", new Date() - msg.time)
+            // console.log("lag:", new Date() - msg.time)
             if (msg.pose) {
-                setHexapodPose(msg.pose)
+                try {
+                    setHexapodPose(msg.pose)
+
+                } catch(e) {
+                    console.error(e)
+                }
             }
         })
     })
