@@ -8,7 +8,7 @@ const http = require("http").Server(app)
 
 const io = require("socket.io")(http, {
     cors: {
-        origin: SOCKET_CLIENT_URLS,
+        origin: "*",
     },
 })
 
