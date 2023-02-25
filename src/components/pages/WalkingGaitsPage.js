@@ -5,7 +5,7 @@ import PoseTable from "../pagePartials/PoseTable"
 import { tRotZmatrix, VirtualHexapod, getWalkSequence } from "hexapod-kinematics-library"
 import { DEFAULT_GAIT_PARAMS } from "../../templates"
 
-const ANIMATION_DELAY = 25
+const ANIMATION_DELAY = 0
 
 const getPose = (sequences, i) => {
     return Object.keys(sequences).reduce((newSequences, legPosition) => {

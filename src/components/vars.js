@@ -62,7 +62,7 @@ const RANGES = {
 const translateInputs = { minVal: -1, maxVal: 1, stepVal: 0.1 }
 
 const RANGE_PARAMS = {
-    dimensionInputs: { minVal: 0, maxVal: Infinity, stepVal: 1 },
+    dimensionInputs: { minVal: 1, maxVal: 120, stepVal: 1 },
     tx: translateInputs,
     ty: translateInputs,
     tz: translateInputs,

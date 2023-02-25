@@ -14,10 +14,15 @@ const App = () => {
     const inHexapodPage = pageName !== SECTION_NAMES.landingPage
     const [sendPose, deltaDate] = useSendPose()
 
-    useEffect(() => sendPose(hexapod.pose), [hexapod, sendPose])
+    useEffect(() => {
+        console.log(hexapod)
+        sendPose(hexapod.pose)
+    }, [hexapod, sendPose]
+    )
 
     const manageState = useCallback((updateType, newParam) => {
-        setRevision(r => r + 1)
+        console.log("manageState", updateType, newParam)
+        // setRevision(r => r + 1)
         setHexapod(h => updateHexapod(updateType, newParam, h))
     }, [])
 
