@@ -2,7 +2,7 @@
 const CHANNEL_NAME = "setServo"
 
 // the port / url where the server listens for commands from clients (clients like our react app)
-const SOCKET_SERVER_PORT = 4001
+const SOCKET_SERVER_PORT = 3001
 const SOCKET_SERVER_URL = `http://0.0.0.0:${SOCKET_SERVER_PORT}`
 
 // client urls that are allowed to connect with our robot
