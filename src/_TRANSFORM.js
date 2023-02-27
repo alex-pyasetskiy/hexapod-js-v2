@@ -16,17 +16,18 @@ const clean = (x, shouldInvert) => {
 
 const transformPose = pose => {
     let newPose = {}
-
     for (let leg of LEG_POSITIONS) {
         const { alpha, beta, gamma } = pose[leg]
         const isLeft = LEFT_LEGS.includes(leg)
         newPose[leg] = {
             alpha: clean(alpha, true),
             beta: clean(beta, isLeft),
-            gamma: clean(gamma, !isLeft),
+            gamma: clean(gamma, !isLeft)
+
+            // gamma: leg.includes('right') ? clean(gamma, false) : clean(gamma, !isLeft)
         }
     }
-
+    console.log(newPose)
     return newPose
 }
 

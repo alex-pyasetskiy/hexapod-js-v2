@@ -50,13 +50,16 @@ const GAIT_SLIDER_LABELS = [
  * RANGE PARAMS
  *************/
 
-const rangeParams = absVal => ({ minVal: -absVal, maxVal: absVal, stepVal: 1 })
+const rangeParams = (min, max) => ({ minVal: min, maxVal: max, stepVal: 1 })
 const RANGES = {
-    30: rangeParams(30),
-    45: rangeParams(45),
-    60: rangeParams(60),
-    90: rangeParams(90),
-    180: rangeParams(180),
+    30: rangeParams(-30,30),
+    45: rangeParams(-45,45),
+    60: rangeParams(-60,60),
+    90: rangeParams(-90, 90),
+    180: rangeParams(-180, 180),
+    alpha: rangeParams(-45,45),
+    beta: rangeParams(-60,60),
+    gamma: rangeParams(-30,90),
 }
 
 const translateInputs = { minVal: -1, maxVal: 1, stepVal: 0.1 }
@@ -71,9 +74,9 @@ const RANGE_PARAMS = {
     rz: RANGES[60],
     legStance: RANGES[90],
     hipStance: RANGES[60],
-    alpha: RANGES[30],
-    beta: RANGES[90],
-    gamma: RANGES[90],
+    alpha: RANGES.alpha,
+    beta: RANGES.beta,
+    gamma: RANGES.gamma,
 }
 
 const GAIT_RANGE_PARAMS = {
