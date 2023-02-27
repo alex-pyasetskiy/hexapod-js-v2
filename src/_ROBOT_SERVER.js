@@ -6,13 +6,13 @@ const { SOCKET_SERVER_PORT, SOCKET_CLIENT_URLS, CHANNEL_NAME } = require("./_VAR
 const app = require("express")()
 const http = require("http").Server(app)
 
-const io = require("socket.io")(http, {
+const socketio = require("socket.io")(http, {
     cors: {
         origin: "*",
     },
 })
 
-const LEG_POSITIONS = [
+const LEGS = [
     "rightMiddle",
     "rightFront",
     "leftFront",
@@ -36,7 +36,7 @@ board.on("ready", () => {
 
     let hexapodServos = {}
 
-    for (let leg of LEG_POSITIONS) {
+    for (let leg of LEGS) {
         hexapodServos[leg] = {
             alpha: initServo(leg, "alpha"),
             beta: initServo(leg, "beta"),
@@ -55,16 +55,24 @@ board.on("ready", () => {
     // COMMAND SERVOS
     // *************************
 
-    var currentPose;
+    const getCurrentState = () => {
+        let servos = {}
+        for (let leg of LEGS){
+            servos[leg] = {
+                alpha: hexapodServos[leg].alpha.position,
+                beta: hexapodServos[leg].beta.position,
+                gamma: hexapodServos[leg].gamma.position
+            }
+        }
+        return servos;
+    };
     const setServo = (pose, leg, angle) => {
         const newPose = pose[leg][angle]
         hexapodServos[leg][angle].to(newPose)
     }
 
     const setHexapodPose = pose => {
-        console.log("pose", pose, )
-        console.log("pocurrentPosese", currentPose)
-        for (let leg of LEG_POSITIONS) {
+        for (let leg of LEGS) {
             setServo(pose, leg, "alpha")
             setServo(pose, leg, "beta")
             setServo(pose, leg, "gamma")
@@ -76,9 +84,11 @@ board.on("ready", () => {
     // *************************
     // LISTEN TO SOCKET
     // *************************
-    io.on("connection", socket => {
+    socketio.on("connection", socket => {
         console.log("client connected.")
-
+        const current_pose = getCurrentState()
+        console.log(current_pose)
+        socket.send(JSON.stringify(current_pose))
         socket.on("disconnect", () => {
             console.log("client disconnected.")
         })
@@ -87,8 +97,8 @@ board.on("ready", () => {
             // console.log("lag:", new Date() - msg.time)
             if (msg.pose) {
                 try {
+                    console.log(msg.pose)
                     setHexapodPose(msg.pose)
-
                 } catch(e) {
                     console.error(e)
                 }
