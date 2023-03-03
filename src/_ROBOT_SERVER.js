@@ -84,11 +84,128 @@ board.on("ready", () => {
     // *************************
     // LISTEN TO SOCKET
     // *************************
+
+    const readySequance = () => {
+        const center = {
+            "leftFront": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "rightFront": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "leftMiddle": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "rightMiddle": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "leftBack": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "rightBack": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            }
+        }
+        const pose1 = {
+            "leftFront": {
+                "alpha": 90,
+                "beta": 150,
+                "gamma": 45
+            },
+            "rightFront": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "leftMiddle": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "rightMiddle": {
+                "alpha": 90,
+                "beta": 38,
+                "gamma": 130
+            },
+            "leftBack": {
+                "alpha": 90,
+                "beta": 160,
+                "gamma": 45
+            },
+            "rightBack": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            }
+        }
+        const pose2 = {
+            "leftFront": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "rightFront": {
+                "alpha": 90,
+                "beta": 30,
+                "gamma": 140
+            },
+            "leftMiddle": {
+                "alpha": 90,
+                "beta": 150,
+                "gamma": 40
+            },
+            "rightMiddle": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "leftBack": {
+                "alpha": 90,
+                "beta": 90,
+                "gamma": 90
+            },
+            "rightBack": {
+                "alpha": 90,
+                "beta": 30,
+                "gamma": 140
+            }
+        }
+        // setHexapodPose(center)
+        // setHexapodPose(pose1)
+        // setHexapodPose(pose2)
+        // setHexapodPose(center)
+        // setHexapodPose(pose2)
+        // setHexapodPose(center)
+        setTimeout(()=>setHexapodPose(center), 0)
+        setTimeout(()=>setHexapodPose(pose1), 100)
+        setTimeout(()=>setHexapodPose(center), 200)
+        setTimeout(()=>setHexapodPose(pose2), 300)
+        setTimeout(()=>setHexapodPose(center), 500)
+
+    }
     socketio.on("connection", socket => {
         console.log("client connected.")
-        const current_pose = getCurrentState()
-        console.log(current_pose)
-        socket.send(JSON.stringify(current_pose))
+
+
+
+
+        // const current_pose = getCurrentState()
+        // console.log(current_pose)
+        // socket.send(JSON.stringify(current_pose))
+        readySequance()
+        
         socket.on("disconnect", () => {
             console.log("client disconnected.")
         })
