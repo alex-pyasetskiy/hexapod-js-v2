@@ -1,7 +1,7 @@
 import React from "react"
 import { GiCoffeeMug } from "react-icons/gi"
-import { FaGithubAlt, FaTimes, FaHome } from "react-icons/fa"
-import { GrStatusGoodSmall } from "react-icons/gr"
+import { FaGamepad, FaRegChartBar, FaHome, FaRegSun, FaHammer } from "react-icons/fa"
+// import { GiMove, GiSettingsKnobs, } from "react-icons/gi"
 
 const SECTION_NAMES = {
     dimensions: "Dimensions",
@@ -58,14 +58,14 @@ const RANGES = {
     90: rangeParams(-90, 90),
     180: rangeParams(-180, 180),
     alpha: rangeParams(-45,45),
-    beta: rangeParams(-60,60),
-    gamma: rangeParams(-30,90),
+    beta: rangeParams(-90,90),
+    gamma: rangeParams(-50,90),
 }
 
-const translateInputs = { minVal: -1, maxVal: 1, stepVal: 0.1 }
+const translateInputs = { minVal: -1, maxVal: 1, stepVal: 0.05 }
 
 const RANGE_PARAMS = {
-    dimensionInputs: { minVal: 1, maxVal: 120, stepVal: 1 },
+    dimensionInputs: { minVal: 1, maxVal: 500, stepVal: 1 },
     tx: translateInputs,
     ty: translateInputs,
     tz: translateInputs,
@@ -80,13 +80,13 @@ const RANGE_PARAMS = {
 }
 
 const GAIT_RANGE_PARAMS = {
-    tx: { minVal: -0.25, maxVal: 0.25, stepVal: 0.1, defaultVal: 0 },
-    tz: { minVal: -0.5, maxVal: 0.5, stepVal: 0.1, defaultVal: 0 },
-    rx: { minVal: -15, maxVal: 15, stepVal: 2.5, defaultVal: 0 },
-    ry: { minVal: -15, maxVal: 15, stepVal: 2.5, defaultVal: 0 },
+    tx: { minVal: -0.25, maxVal: 0.25, stepVal: 0.05, defaultVal: 0 },
+    tz: { minVal: -0.5, maxVal: 0.5, stepVal: 0.05, defaultVal: 0 },
+    rx: { minVal: -15, maxVal: 15, stepVal: 1, defaultVal: 0 },
+    ry: { minVal: -15, maxVal: 15, stepVal: 1, defaultVal: 0 },
     legStance: { minVal: -50, maxVal: 50, stepVal: 1, defaultVal: 0 },
-    hipStance: { minVal: 0, maxVal: 40, stepVal: 1, defaultVal: 20 },
-    hipSwing: { minVal: 10, maxVal: 40, stepVal: 1, defaultVal: 25 },
+    hipStance: { minVal: -40, maxVal: 40, stepVal: 1, defaultVal: 0 },
+    hipSwing: { minVal: 0, maxVal: 20, stepVal: 1, defaultVal: 0 },
     liftSwing: { minVal: 10, maxVal: 70, stepVal: 1, defaultVal: 40 },
     stepCount: { minVal: 3, maxVal: 7, stepVal: 1, defaultVal: 5 },
 }
@@ -95,11 +95,11 @@ const GAIT_RANGE_PARAMS = {
  *************/
 
 const ICON_COMPONENTS = {
-    mug: <GiCoffeeMug className="vertical-align" />,
-    circle: <GrStatusGoodSmall className="small-icon" />,
-    octocat: <FaGithubAlt className="vertical-align" />,
-    times: <FaTimes className="vertical-align" />,
     home: <FaHome className="vertical-align" />,
+    walkGait: <FaGamepad className="vertical-align"/>,
+    ik: <FaRegSun className="vertical-align" />,
+    forward: <FaRegChartBar className="vertical-align" />,
+    legPatterns: <FaHammer className="vertical-align" />
 }
 
 /*************
@@ -110,17 +110,17 @@ const PATHS = {
     inverseKinematics: {
         path: PATH_NAMES.inverseKinematics,
         description: SECTION_NAMES.inverseKinematics,
-        icon: ICON_COMPONENTS.circle,
+        icon: ICON_COMPONENTS.ik,
     },
     forwardKinematics: {
         path: PATH_NAMES.forwardKinematics,
         description: SECTION_NAMES.forwardKinematics,
-        icon: ICON_COMPONENTS.circle,
+        icon: ICON_COMPONENTS.forward,
     },
     legPatterns: {
         path: PATH_NAMES.legPatterns,
         description: SECTION_NAMES.legPatterns,
-        icon: ICON_COMPONENTS.circle,
+        icon: ICON_COMPONENTS.legPatterns,
     },
     landingPage: {
         path: PATH_NAMES.landingPage,
@@ -131,7 +131,7 @@ const PATHS = {
     walkingGaits: {
         path: PATH_NAMES.walkingGaits,
         description: SECTION_NAMES.walkingGaits,
-        icon: ICON_COMPONENTS.circle,
+        icon: ICON_COMPONENTS.walkGait,
     },
 }
 
@@ -163,12 +163,7 @@ const URL_LINKS = [KOFI_LINK_PROPERTIES, REPO_LINK_PROPERTIES]
  * LANDING PAGE
  *************/
 
-const LANDING_PAGE_MESSAGE = `
-
-# Mithi's Bare Minimum Hexapod Robot Simulator
-
-Enjoy your stay and share with your friends!
-`
+const LANDING_PAGE_MESSAGE = `Hexapod`
 
 export {
     ICON_COMPONENTS,

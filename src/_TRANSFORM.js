@@ -21,10 +21,11 @@ const transformPose = pose => {
         const isLeft = LEFT_LEGS.includes(leg)
         newPose[leg] = {
             alpha: clean(alpha, true),
-            beta: clean(beta, isLeft),
-            gamma: clean(gamma, !isLeft)
+            beta: leg.includes('right') ? clean(beta, true) : clean(beta, !isLeft),
+            // beta: clean(beta, isLeft),
+            // gamma: clean(gamma, !isLeft)
 
-            // gamma: leg.includes('right') ? clean(gamma, false) : clean(gamma, !isLeft)
+            gamma: leg.includes('right') ? clean(gamma, true) : clean(gamma, !isLeft)
         }
     }
     console.log(newPose)

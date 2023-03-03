@@ -27,19 +27,19 @@ const BulletUrlLink = ({ path, description, icon }) => (
                     {icon} {description}
                 </span>
             }
-        />
+        >{path}</a>
     </li>
 )
 
 const NavBullets = () => (
     <ul id="top-bar">
-        {URL_LINKS.map(link => (
+        {/* {URL_LINKS.map(link => (
             <BulletUrlLink
                 path={link.url}
                 key={NAV_BULLETS_PREFIX + link.url}
                 icon={link.icon}
             />
-        ))}
+        ))} */}
 
         {PATH_LINKS.map(link => (
             <BulletPageLink key={NAV_BULLETS_PREFIX + link.path} link={link} />
@@ -51,14 +51,14 @@ const NavDetailed = () => (
     <footer>
         <nav id="nav">
             <ul className="grid-cols-1 no-bullet">
-                {URL_LINKS.map(link => (
+                {/* {URL_LINKS.map(link => (
                     <BulletUrlLink
                         path={link.url}
                         key={NAV_DETAILED_PREFIX + link.url}
                         icon={link.icon}
                         description={link.description}
                     />
-                ))}
+                ))} */}
 
                 {PATH_LINKS.map(link => (
                     <BulletPageLink

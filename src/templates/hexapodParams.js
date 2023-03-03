@@ -2,10 +2,10 @@
 const DEFAULT_DIMENSIONS = {
     front: 115,
     side: 220,
-    middle: 120,
-    coxia: 80,
-    femur: 85,
-    tibia: 100,
+    middle: 220,
+    coxia: 85,
+    femur: 95,
+    tibia: 140,
 }
 
 const DEFAULT_BODY_DIMENSIONS = {
@@ -47,8 +47,9 @@ const DEFAULT_GAIT_PARAMS = {
     rx: 0,
     ry: 0,
     legStance: 25,
-    hipStance: 20,
-    hipSwing: 25,
+    hipStance: 0,
+    //hipSwing: 25,
+    hipSwing: 0,
     liftSwing: 40,
     stepCount: 5,
 }

@@ -5,7 +5,7 @@ import PoseTable from "../pagePartials/PoseTable"
 import { tRotZmatrix, VirtualHexapod, getWalkSequence } from "hexapod-kinematics-library"
 import { DEFAULT_GAIT_PARAMS } from "../../templates"
 
-const ANIMATION_DELAY = 0
+const ANIMATION_DELAY = 100
 
 const getPose = (sequences, i) => {
     return Object.keys(sequences).reduce((newSequences, legPosition) => {
@@ -66,6 +66,7 @@ class WalkingGaitsPage extends Component {
         const pose = getPose(this.walkSequence, step)
 
         if (inWalkMode) {
+            // this.setState({...this.state, gateParams: {...DEFAULT_GAIT_PARAMS, hipSwing: 25}})
             this.onUpdate(pose, this.currentTwist)
             return
         }
@@ -99,9 +100,9 @@ class WalkingGaitsPage extends Component {
 
         const { dimensions } = this.props.params
         const { animationCount } = this.state
-
+        const params = {...gaitParams, hipSwing: gaitParams.hipSwing===0 ? 20 : gaitParams.hipSwing}
         this.walkSequence =
-            getWalkSequence(dimensions, gaitParams, gaitType, walkMode) ||
+            getWalkSequence(dimensions, params, gaitType, walkMode) ||
             this.walkSequence
 
         const pose = getPose(this.walkSequence, animationCount)

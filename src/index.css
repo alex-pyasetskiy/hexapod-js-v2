@@ -427,7 +427,7 @@ input:checked + .toggle-switch-widget:before {
     }
 
     #main {
-        flex-direction: column-reverse;
+        flex-direction: column;
         margin: 0;
     }
 

@@ -10,7 +10,7 @@ const GROUND_COLOR = "rgb(14, 40, 69)"
 const BODY_MESH_OPACITY = 0.3
 const BODY_OUTLINE_WIDTH = 12
 const COG_SIZE = 14
-const HEAD_SIZE = 14
+const HEAD_SIZE = 10
 const LEG_OUTLINE_WIDTH = 10
 const SUPPORT_POLYGON_MESH_OPACITY = 0.2
 
@@ -85,7 +85,7 @@ const DATA = [
     {
         line: { color: LEG_COLOR, width: LEG_OUTLINE_WIDTH },
         name: "rightMiddleLeg",
-        showlegend: false,
+        showlegend: true,
         type: "scatter3d",
         x: [100.0, 200.0, 300.0, 300.0],
         y: [0.0, 0.0, 0.0, 0.0],
@@ -164,8 +164,8 @@ const DATA = [
         line: { color: "#2f3640", width: 2 },
         name: "hexapodXaxis",
         mode: "lines",
-        showlegend: false,
-        opacity: 1.0,
+        showlegend: true,
+        opacity: 0.5,
         type: "scatter3d",
         x: [0.0, 50.0],
         y: [0.0, 0.0],
@@ -176,7 +176,7 @@ const DATA = [
         name: "hexapodYaxis",
         mode: "lines",
         showlegend: false,
-        opacity: 1.0,
+        opacity: 0.5,
         type: "scatter3d",
         x: [0.0, 0.0],
         y: [0.0, 50.0],
@@ -187,7 +187,7 @@ const DATA = [
         name: "hexapodZaxis",
         mode: "lines",
         showlegend: false,
-        opacity: 1.0,
+        opacity: 0.5,
         type: "scatter3d",
         x: [0.0, 0.0],
         y: [0.0, 0.0],
@@ -198,7 +198,7 @@ const DATA = [
         name: "worldXaxis",
         showlegend: false,
         mode: "lines",
-        opacity: 1.0,
+        opacity: 0.5,
         type: "scatter3d",
         x: [0, 50],
         y: [0, 0],
@@ -209,7 +209,7 @@ const DATA = [
         name: "worldYaxis",
         showlegend: false,
         mode: "lines",
-        opacity: 1.0,
+        opacity: 0.5,
         type: "scatter3d",
         x: [0, 0],
         y: [0, 50],
@@ -220,7 +220,7 @@ const DATA = [
         name: "worldZaxis",
         showlegend: false,
         mode: "lines",
-        opacity: 1.0,
+        opacity: 0.5,
         type: "scatter3d",
         x: [0, 0],
         y: [0, 0],
@@ -230,19 +230,19 @@ const DATA = [
 
 const CAMERA_VIEW = {
     center: {
-        x: 0.0005967195135552272,
-        y: 0.11455181630825005,
-        z: -0.44957387699746415,
+        x: 0.0005,//0.0005967195135552272,
+        y: 0.1,
+        z: -0.4,
     },
     eye: {
-        x: 0.010119765679525836,
-        y: 0.573601223004958,
-        z: 0.04247372257492105,
+        x: 0,//0.010119765679525836,
+        y: -0.6,//0.573601223004958,
+        z: 0.001//0.04247372257492105,
     },
     up: {
-        x: 0.006592638138864914,
-        y: 0.00003338632363222382,
-        z: 0.9999782677677168,
+        x: 0.006,
+        y: 0.00003,
+        z: 0.5,
     },
 }
 
@@ -266,8 +266,8 @@ const SCENE = {
         showbackground: true,
         backgroundcolor: GROUND_COLOR,
     },
-    aspectmode: "manual",
-    aspectratio: { x: 1, y: 1, z: 1 },
+    aspectmode: "auto",
+    aspectratio: { x: 0.8, y: 0.8, z: 0.8 },
     camera: CAMERA_VIEW,
 }
 

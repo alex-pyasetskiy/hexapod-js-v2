@@ -49,6 +49,7 @@ const App = () => {
         <Router>
             <Nav />
             <div id="main">
+
                 <div id="sidebar">
                     <div hidden={!inHexapodPage}>
                         <DimensionsWidget
@@ -57,14 +58,14 @@ const App = () => {
                         />
                     </div>
                     <Page pageComponent={pageComponent} />
-                    <p> deltaDate: {deltaDate} </p>
-                    {!inHexapodPage ? <NavDetailed /> : null}
                 </div>
                 <div id="plot" className="border" hidden={!inHexapodPage}>
                     <HexapodPlot revision={revision} hexapod={hexapod} />
+
                 </div>
             </div>
-            {inHexapodPage ? <NavDetailed /> : null}
+
+            {/* {inHexapodPage ? <NavDetailed /> : null} */}
         </Router>
     )
 }
