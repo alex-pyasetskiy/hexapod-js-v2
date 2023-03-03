@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react"
 import { BrowserRouter as Router } from "react-router-dom"
 import { DEFAULT_POSE } from "./templates"
 import { SECTION_NAMES } from "./components/vars"
-import { Nav, NavDetailed, DimensionsWidget } from "./components"
+import { Nav, DimensionsWidget } from "./components"
 import { updateHexapod, Page } from "./AppHelpers"
 import HexapodPlot from "./components/HexapodPlot"
 import useSendPose from "./_HOOK"
@@ -21,8 +21,7 @@ const App = () => {
     )
 
     const manageState = useCallback((updateType, newParam) => {
-        console.log("manageState", updateType, newParam)
-        // setRevision(r => r + 1)
+        setRevision(r => r + 1)
         setHexapod(h => updateHexapod(updateType, newParam, h))
     }, [])
 
@@ -65,7 +64,6 @@ const App = () => {
                 </div>
             </div>
 
-            {/* {inHexapodPage ? <NavDetailed /> : null} */}
         </Router>
     )
 }
