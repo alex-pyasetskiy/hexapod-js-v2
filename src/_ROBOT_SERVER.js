@@ -77,8 +77,6 @@ board.on("ready", () => {
             setServo(pose, leg, "beta")
             setServo(pose, leg, "gamma")
         }
-
-        currentPose = pose;
     }
 
     // *************************
